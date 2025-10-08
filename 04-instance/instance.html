@@ -11,12 +11,16 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
   <script>
-    var vm = new Vue({
+    // 객체 리터럴
+    var options = {
       el: '#app',
       data: {
         message: 'hi'
-      }
-    });
+      },
+      methods: {
+      },
+    };
+    var vm = new Vue(options);
   </script>
   
 </body>

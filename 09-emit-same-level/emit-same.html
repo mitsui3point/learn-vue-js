@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <app-header v-bind:propsdata="num"></app-header>
+    <app-content v-on:pass="deliverNum"></app-content>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+  <script>
+    const appHeader = {
+      template: '<h1>{{ propsdata }}</h1>',
+      props: ['propsdata']
+    }
+    const appContent = {
+      template: '<div>content<button v-on:click="passNum(10)">passNum</button></div>',
+      methods: {
+        passNum: function(num) {
+          this.$emit('pass', num);
+        }
+      }
+    }
+    const app = Vue.createApp({
+      components: {
+        'app-header': appHeader,
+        'app-content': appContent
+      },
+      methods: {
+        deliverNum: function(value) {
+          this.num = value;
+        }
+      },
+      data() {
+        return {
+          num: 0
+        }
+      }
+    })
+    app.mount('#app');
+  </script>
+</body>
+</html>

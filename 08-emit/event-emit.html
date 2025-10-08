@@ -7,7 +7,9 @@
 </head>
 <body>
   <div id="app">
+    <p>{{ num }}</p>
     <app-header v-on:pass="logText"></app-header>
+    <app-content v-on:increase="increaseNum"></app-content>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
   <script>
@@ -19,13 +21,30 @@
         }
       }
     }
+    const appContent = {
+      template: '<button v-on:click="addNumber">add</button>',
+      methods: {
+        addNumber: function() {
+          this.$emit('increase');
+        }
+      }
+    }
     const app = Vue.createApp({
       components: {
         'app-header': appHeader,
+        'app-content': appContent
       },
       methods: {
         logText: function() {
           console.log('hi');
+        },
+        increaseNum: function() {
+          this.num++;
+        }
+      },
+      data() {
+        return {
+          num: 10
         }
       }
     }).mount('#app');

@@ -9,12 +9,22 @@
   <div id="app">
     <app-header></app-header>
     <app-content></app-content>
+    <app-footer></app-footer>
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
   <script>
-    const app = Vue.createApp();
+    // 지역 컴포넌트
+    const localComponents = {
+      'app-footer': {
+        template: '<footer>Footer</footer>'
+      }
+    }
+    const app = Vue.createApp({
+      components: localComponents // 지역 컴포넌트
+    });
     
+    // 전역 컴포넌트
     app.component('app-header', {
       template: '<h1>Header</h1>'
     });

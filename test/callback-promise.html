@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 콜백 지옥
+    // function fetchData(callbackFn) {
+    //   setTimeout(function() {
+    //     callbackFn('John');
+    //   }, 2000);
+    // }
+    // fetchData(function(name) {
+    //   console.log('fetchData 1callback', name);
+    //   fetchData(function(name) {
+    //     console.log('fetchData 2callback', name);
+    //     fetchData(function(name) {
+    //       console.log('fetchData 3callback', name);
+    //       fetchData(function(name) {
+    //         console.log('fetchData 4callback', name);
+    //       });
+    //     });
+    //   });
+    // });
+
+    function fetchData(name) {
+      return new Promise((resolve, reject) => {
+        setTimeout(function() {
+          if (name) {
+            resolve(name);
+          } else {
+            reject(new Error('noname'));
+          }
+        }, 2000);
+      });
+    }
+    fetchData('firstName')
+      .then(function(name) {
+        console.log('fetchData2 1callback', name);
+        return fetchData();
+      })
+      .catch(function(error) {
+        console.log('fetchData2 1callback error', error);
+        return fetchData('secondName');
+      })
+      .then(function(name) {
+        console.log('fetchData2 2callback', name);
+        return fetchData();
+      })
+      .catch(function(error) {
+        console.log('fetchData2 2callback error', error);
+        return fetchData('thirdName');
+      })
+      .then(function(name) {
+        console.log('fetchData2 3callback', name);
+        return fetchData();
+      })
+      .catch(function(error) {
+        console.log('fetchData2 3callback error', error);
+        return fetchData('fourthName');
+      })
+      .then(function(name) {
+        console.log('fetchData2 4callback', name);
+        return fetchData();
+      })
+      .catch(function(error) {
+        console.log('fetchData2 4callback error', error);
+        return fetchData('fifthName');
+      });
+  </script>
+</body>
+</html>

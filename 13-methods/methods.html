@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="logText">click me</button>
+    <input type="text" v-on:keyup.enter="logText">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      methods: {
+        logText: function(event) {
+          console.log('clicked', event.target.value);
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>

@@ -19,6 +19,11 @@
     <div v-show="loading">
       Loading...
     </div>
+    <input type="text" v-model="message">
+    <!-- <input
+      :value="message"
+      @input="event => message = event.target.value"> -->
+    <p>{{ message }}</p>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
   <script>
@@ -29,6 +34,7 @@
           uuid: '1234567890',
           name: 'text-blue',
           loading: true,
+          message: 'hi'
         }
       },
       computed: {

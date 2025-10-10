@@ -1,10 +1,19 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+  export default {
+    name: 'App',  // 이 부분을 추가
+    data: function() {
+      return {
+        str: 'hi'
+      }
+    }
+  }
 </script>
 
 <template>
-  <header>
+  <div id="app">
+    {{ str }}
+  </div>
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -17,7 +26,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
   </header>
 
-  <RouterView />
+  <RouterView /> -->
 </template>
 
 <style scoped>

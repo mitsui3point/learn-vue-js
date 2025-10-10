@@ -1,33 +1,21 @@
+<template>
+  <app-header v-bind:propsdata="str"></app-header>
+</template>
+
 <script>
+  import AppHeader from './components/AppHeader.vue'
   export default {
     name: 'App',  // 이 부분을 추가
     data: function() {
       return {
-        str: 'hi'
+        str: 'Header'
       }
+    },
+    components: {
+      'app-header': AppHeader
     }
   }
 </script>
-
-<template>
-  <div id="app">
-    {{ str }}
-  </div>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView /> -->
-</template>
 
 <style scoped>
 header {

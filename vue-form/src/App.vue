@@ -1,0 +1,21 @@
+<template>
+  <form action="/">
+    <div>
+      <label for="username">id:</label>
+      <input id="username" type="text" >
+    </div>
+    <div>
+      <label for="password">password:</label>
+      <input id="password" type="password" >
+    </div>
+    <button>login</button>
+  </form>
+</template>
+
+<script>
+
+</script>
+
+
+<style scoped>
+</style>
